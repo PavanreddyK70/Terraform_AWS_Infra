@@ -23,10 +23,6 @@ output "nat_gateway_id" {
   value       = aws_nat_gateway.nat.id
 }
 
-output "public_route_table_id" {
-  description = "Public Route Table ID"
-  value       = aws_route_table.public_rt.id
-}
 
 output "private_route_table_id" {
   description = "Private Route Table ID"
