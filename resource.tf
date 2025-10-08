@@ -139,20 +139,3 @@ resource "aws_route_table_association" "private2_assoc" {
 
 # Data source for AZs
 data "aws_availability_zones" "available" {}
-
-# Create DynamoDB table for locking
-resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "terraform_locks"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "LockID"
-
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-
-  tags = {
-    Name = "TerraformLocks"
-  }
-}
-
