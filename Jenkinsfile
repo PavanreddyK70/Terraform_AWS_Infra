@@ -1,18 +1,22 @@
 pipeline {
     agent any
     environment {
-        AWS_ACCESS_KEY_ID     = credentials('aws_access_key_id')
-        AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key_id')
+        AWS = credentials('aws_admin')
     }
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/PavanreddyK70/Terraform_project'
+                git branch: 'main', url: 'https://github.com/PavanreddyK70/Terraform_AWS_Infra.git'
             }
         }
         stage('Terraform Init') {
             steps {
                 sh 'terraform init -reconfigure'
+            }
+        }
+        stage('Terraform Validate'){
+            steps {
+                sh 'terraform validate'
             }
         }
         stage('Terraform Plan') {
