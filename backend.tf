@@ -4,6 +4,7 @@ terraform {
     key            = "vpc/terraform.tfstate"        # folder/path for state file
     region         = "ap-south-1"                   # your AWS region
     dynamodb_table = "terraform-locks"              # same DynamoDB table name
+    use_lockfile = true  
     encrypt        = true
   }
 }
