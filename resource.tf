@@ -140,17 +140,6 @@ resource "aws_route_table_association" "private2_assoc" {
 # Data source for AZs
 data "aws_availability_zones" "available" {}
 
-# create s3 bucket
-resource "aws_s3_bucket" "my_bucket" {
-  bucket = "pavan-bucket-01"
-  versioning {
-    enabled = true 
-  }
-  tags = {
-    Name        = "pavan-bucket-01"
-  }
-}
-
 # Create DynamoDB table for locking
 resource "aws_dynamodb_table" "terraform_locks" {
   name         = "terraform_locks"
